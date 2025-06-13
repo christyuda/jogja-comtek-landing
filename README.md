@@ -34,3 +34,58 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+jogja-comtek-landing/
+├── public/
+│   ├── assets/
+│   │   ├── logo/                # Logo resmi Jogja Comtek
+│   │   ├── hero/                # Gambar header landing page
+│   │   ├── promo/               # Banner promo diskon
+│   │   ├── rundown/             # Gambar rundown acara
+│   │   └── barcode/             # Gambar barcode (untuk scan / link)
+│   └── favicon.ico
+│
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx           # Layout global (Navbar + Footer)
+│   │   ├── page.tsx             # Halaman utama (Landing page)
+│   │   ├── about/
+│   │   │   └── page.tsx         # /about: Tentang event
+│   │   ├── promo/
+│   │   │   └── page.tsx         # /promo: Diskon & promo
+│   │   ├── rundown/
+│   │   │   └── page.tsx         # /rundown: Jadwal lengkap
+│   │   ├── barcode/
+│   │   │   └── page.tsx         # /barcode: Link ke barcode scan
+│   │   └── api/                 # (Opsional) API route
+│
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   ├── EventCard.tsx
+│   │   ├── PromoCard.tsx
+│   │   └── BarcodeLink.tsx
+│
+│   ├── constants/
+│   │   ├── colors.ts            # Warna perusahaan
+│   │   └── site.ts              # Metadata situs
+│
+│   ├── styles/
+│   │   └── globals.css          # Tailwind / CSS global
+│
+│   ├── types/
+│   │   └── promo.ts             # Tipe data promo
+│
+│   ├── lib/
+│   │   └── utils.ts             # (Opsional) helper tools
+│
+│   └── hooks/                   # (Opsional) custom hooks
+│       └── useScrollTop.ts
+│
+├── .env.local
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── package.json
+└── README.md
