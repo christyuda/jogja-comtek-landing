@@ -1,15 +1,34 @@
 export default function Footer() {
-    return (
-      <footer className="bg-blue-600 text-white text-sm mt-12 py-6 px-4 md:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4">
-          <div>&copy; 2025 Jogja Comtek. All rights reserved.</div>
-          <div className="flex gap-4">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">TikTok</a>
-          </div>
+  return (
+    <footer className="bg-[#3B82F6] dark:bg-[#1e3a8a] text-white mt-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Kiri: Info copyright */}
+        <div className="text-center md:text-left text-sm md:text-base font-medium tracking-wide">
+          &copy; {new Date().getFullYear()} <span className="font-semibold">Jogja Comtek</span>. All rights reserved.
         </div>
-      </footer>
-    );
-  }
-  
+
+        {/* Kanan: Social Media */}
+        <div className="flex gap-6 text-sm">
+          <a
+            href="#"
+            className="hover:text-yellow-300 transition-colors duration-200"
+          >
+            Instagram
+          </a>
+          <a
+            href="#"
+            className="hover:text-orange-300 transition-colors duration-200"
+          >
+            Facebook
+          </a>
+          <a
+            href="#"
+            className="hover:text-red-300 transition-colors duration-200"
+          >
+            TikTok
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}

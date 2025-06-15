@@ -25,17 +25,25 @@ export default function Navbar() {
     };
   }, []);
   const handleSmoothScroll = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
-  ) => {
-    e.preventDefault(); // mencegah default jump
-    const el = document.getElementById(targetId);
-    if (el) {
-      const lenis = getLenisInstance();
-      lenis?.scrollTo(el);
-      closeDrawer(); // jika drawer sedang terbuka
-    }
-  };
+  e: React.MouseEvent<HTMLAnchorElement>,
+  targetId: string
+) => {
+  e.preventDefault();
+  const el = document.getElementById(targetId);
+  if (el) {
+    const lenis = getLenisInstance();
+    lenis?.scrollTo(el, {
+      offset: -10, // sedikit offset agar tidak menempel
+      duration: 1.3, // durasi lebih lama = lebih halus
+      easing: (t) =>
+        t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2, // easeInOutCubic
+    });
+    closeDrawer?.();
+  }
+};
+
   const openDrawer = () => {
     setIsDrawerVisible(true);
     setIsMobileMenuOpen(true);

@@ -55,15 +55,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
                 </div>
                 <h3 className="hidden md:block text-base md:pl-20 md:text-2xl font-semibold text-neutral-600 dark:text-neutral-400">
-  {item.title}
-</h3>
-
+                  {item.title}
+                </h3>
               </div>
 
               <div className="relative pl-20 pr-4 md:pl-4 w-full">
                 <h3 className="md:hidden block text-base mb-3 font-semibold text-neutral-600 dark:text-neutral-400">
-  {item.title}
-</h3>
+                  {item.title}
+                </h3>
 
                 {item.content}
               </div>

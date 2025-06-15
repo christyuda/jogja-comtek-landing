@@ -25,7 +25,7 @@ export default function AboutSection() {
             inactiveZone={0.01}
           />
           <Image
-            src="/images/about-illustration.svg"
+            src="/assets/images/jogja-comtek-banner.jpg"
             alt="About Jogja Comtek"
             width={500}
             height={400}
