@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence, cubicBezier } from "framer-motion";
+import { motion, AnimatePresence, cubicBezier, easeIn, easeOut, easeInOut } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 export const ImagesSlider = ({
@@ -10,7 +10,7 @@ export const ImagesSlider = ({
   overlayClassName,
   className,
   autoplay = true,
-  direction = "up",
+  direction = "left",
 }: {
   images: string[];
   children: React.ReactNode;
@@ -18,7 +18,7 @@ export const ImagesSlider = ({
   overlayClassName?: string;
   className?: string;
   autoplay?: boolean;
-  direction?: "up" | "down";
+  direction?: "left" | "right";
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -74,7 +74,7 @@ export const ImagesSlider = ({
     if (autoplay) {
       interval = setInterval(() => {
         handleNext();
-      }, 5000);
+      }, 8000);
     }
 
     return () => {
@@ -84,35 +84,42 @@ export const ImagesSlider = ({
   }, []);
 
   const slideVariants = {
-    initial: {
-      scale: 0,
-      opacity: 0,
-      rotateX: 45,
+  initial: {
+    scale: 0.98,
+    opacity: 0,
+    rotateX: 0,
+    x: 50,
+  },
+  visible: {
+    scale: 1,
+    rotateX: 0,
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      easeIn: cubicBezier(0.25, 1, 0.5, 1), // <-- easeOutExpo feel
     },
-    visible: {
-      scale: 1,
-      rotateX: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: cubicBezier(0.42, 0, 0.58, 1),
+  },
+  leftExit: {
+    opacity: 0,
+    x: "-100%",
+    scale: 1.05,
+    transition: {
+      duration: 0.8,
+      easeInOut: cubicBezier(0.42, 0, 0.58, 1),
     },
+  },
+  rightExit: {
+    opacity: 0,
+    x: "100%",
+    scale: 1.05,
+    transition: {
+      duration: 0.8,
+      easeOut: cubicBezier(0.42, 0, 0.58, 1),
     },
-    upExit: {
-      opacity: 1,
-      y: "-150%",
-      transition: {
-        duration: 1,
-      },
-    },
-    downExit: {
-      opacity: 1,
-      y: "150%",
-      transition: {
-        duration: 1,
-      },
-    },
-  };
+  },
+};
+
 
   const areImagesLoaded = loadedImages.length > 0;
 
@@ -136,12 +143,13 @@ export const ImagesSlider = ({
       {areImagesLoaded && (
         <AnimatePresence>
           <motion.img
+            variants={slideVariants}
             key={currentIndex}
             src={loadedImages[currentIndex]}
             initial="initial"
             animate="visible"
-            exit={direction === "up" ? "upExit" : "downExit"}
-            variants={slideVariants}
+
+            exit={direction === "left" ? "leftExit" : "rightExit"}
             className="image h-full w-full absolute inset-0 object-cover object-center"
           />
         </AnimatePresence>

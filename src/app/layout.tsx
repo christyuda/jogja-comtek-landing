@@ -7,8 +7,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="id">
       <body className="bg-white text-gray-800 font-sans">
         <Navbar />
-        <main className="min-h-screen px-4 md:px-12 lg:px-24">{children}</main>
-        <Footer />
+        
+ <main className="min-h-screen ">
+          {children}
+        </main>        <Footer />
       </body>
     </html>
   );
