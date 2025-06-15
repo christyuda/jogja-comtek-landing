@@ -1,26 +1,35 @@
-// hooks/useSmoothScroll.ts
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import { useEffect } from 'react';
+import Lenis from '@studio-freight/lenis';
+
+let lenisInstance: Lenis | null = null;
+
+export function getLenisInstance() {
+  return lenisInstance;
+}
 
 export default function useSmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.8, // 1.8s transition
-      smoothWheel: true, // smooth wheel scrolling
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
+      duration: 1.2,
+      smoothWheel: true,
+      syncTouch: true,
+      easing: (t) => t,
     });
 
-    function raf(time: number) {
+    lenisInstance = lenis; // simpan ke variable global
+
+    const raf = (time: number) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
-    }
+    };
 
     requestAnimationFrame(raf);
 
     return () => {
       lenis.destroy();
+      lenisInstance = null;
     };
   }, []);
 }

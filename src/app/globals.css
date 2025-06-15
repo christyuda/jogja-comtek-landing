@@ -65,3 +65,9 @@ body {
   color: transparent;
 }
 
+html {
+  scroll-behavior: auto; /* matikan smooth native */
+}
+body {
+  overflow-x: hidden;
+}
