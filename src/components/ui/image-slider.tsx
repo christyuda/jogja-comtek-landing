@@ -38,10 +38,9 @@ export const ImagesSlider = ({
 
   useEffect(() => {
     loadImages();
-  }, []);
+  }, );
 
   const loadImages = () => {
-    setLoading(true);
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
