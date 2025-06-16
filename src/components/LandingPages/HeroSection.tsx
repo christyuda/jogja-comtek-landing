@@ -45,7 +45,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            Jogja Comtek 2025
+            YogyaKomtek 2025
           </motion.p>
 
           <motion.h1

@@ -2,6 +2,7 @@
 "use client";
 
 import AboutSection from "@/components/LandingPages/AboutSection";
+import CountdownSection from "@/components/LandingPages/CountdownSection";
 import HeroSection from "@/components/LandingPages/HeroSection";
 import HomeContent from "@/components/LandingPages/HomeContent";
 import { ScheduleSection } from "@/components/LandingPages/ScheduleSection";
@@ -15,6 +16,8 @@ export default function HomePage() {
       <HomeContent />
       <AboutSection />
       <ScheduleSection />
+      <CountdownSection />
+      
       
 
       

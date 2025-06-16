@@ -96,7 +96,7 @@ export const ImagesSlider = ({
     opacity: 1,
     transition: {
       duration: 0.8,
-      easeIn: cubicBezier(0.25, 1, 0.5, 1), // <-- easeOutExpo feel
+      easeIn: cubicBezier(0.25, 1, 0.5, 1), 
     },
   },
   leftExit: {

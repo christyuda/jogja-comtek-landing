@@ -25,24 +25,22 @@ export default function Navbar() {
     };
   }, []);
   const handleSmoothScroll = (
-  e: React.MouseEvent<HTMLAnchorElement>,
-  targetId: string
-) => {
-  e.preventDefault();
-  const el = document.getElementById(targetId);
-  if (el) {
-    const lenis = getLenisInstance();
-    lenis?.scrollTo(el, {
-      offset: -10, // sedikit offset agar tidak menempel
-      duration: 1.3, // durasi lebih lama = lebih halus
-      easing: (t) =>
-        t < 0.5
-          ? 4 * t * t * t
-          : 1 - Math.pow(-2 * t + 2, 3) / 2, // easeInOutCubic
-    });
-    closeDrawer?.();
-  }
-};
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (el) {
+      const lenis = getLenisInstance();
+      lenis?.scrollTo(el, {
+        offset: -10, // sedikit offset agar tidak menempel
+        duration: 1.3, // durasi lebih lama = lebih halus
+        easing: (t) =>
+          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2, // easeInOutCubic
+      });
+      closeDrawer?.();
+    }
+  };
 
   const openDrawer = () => {
     setIsDrawerVisible(true);
@@ -86,7 +84,15 @@ export default function Navbar() {
         >
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold text-white">
-              Jogja Comtek
+              <Link href="/">
+                <img
+                  src="/assets/logo/yogyakomtek.png"
+                  alt="yogyakomtek"
+                  className="h-12 w-auto"
+                  width={200}
+                  height={200}
+                />
+              </Link>
             </span>
           </div>
 
@@ -100,14 +106,15 @@ export default function Navbar() {
               TENTANG
               <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
             </a>
-<a
+            <a
               href="#schedule"
               onClick={(e) => handleSmoothScroll(e, "schedule")}
               className="relative group text-sm font-semibold text-white"
             >
               JADWAL
               <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
-            </a>            {navItem("#", "EVENT")}
+            </a>{" "}
+            {navItem("#", "EVENT")}
             {navItem("#", "BLOG")}
             {navItem("#", "CONTACT")}
           </div>

@@ -46,7 +46,7 @@ export default function AboutSection() {
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 dark:text-white leading-tight mb-4">
             <span className="bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] bg-clip-text text-transparent">
-              Tentang Jogja Comtek 2025
+              Tentang Yogyakomtek 2025
             </span>
           </h2>
 
@@ -63,7 +63,7 @@ export default function AboutSection() {
 
           <div className="flex flex-wrap gap-4">
             <button className="bg-gradient-to-r from-[#F97316] to-[#EF4444] text-white px-6 py-2 rounded-full font-semibold shadow-md hover:scale-105 transition">
-              Lihat Jadwal →
+                Lihat Jadwal →
             </button>
             <button className="border border-neutral-300 dark:border-neutral-700 px-6 py-2 rounded-full font-medium text-neutral-700 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
               Daftar Sekarang
