@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence, cubicBezier, easeIn, easeOut, easeInOut } from "framer-motion";
+import { motion, AnimatePresence, cubicBezier } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 export const ImagesSlider = ({
