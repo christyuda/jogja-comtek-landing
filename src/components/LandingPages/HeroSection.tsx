@@ -64,7 +64,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
           >
-            Jogja Comtek 2025 hadir sebagai pameran teknologi dan inovasi terbesar — penuh promo, hiburan, dan solusi masa depan!
+            Yogyakomtek 2025 hadir sebagai pameran teknologi dan inovasi terbesar — penuh promo, hiburan, dan solusi masa depan!
           </motion.p>
 
           <motion.div

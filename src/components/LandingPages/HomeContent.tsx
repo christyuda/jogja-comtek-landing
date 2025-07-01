@@ -20,12 +20,14 @@ export default function HomeContent() {
             transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
             className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
           >
-            Jelajahi teknologi <ContainerTextFlip words={["Keren", "Pintar", "Cepat", "Moderen"]}
+            Jelajahi teknologi {" "}
+            <ContainerTextFlip words={[ "Keren", "Pintar", "Cepat", "Modern", "Inovatif"]}
         interval={2500}
         animationDuration={800}
-        textClassName="text-indigo-600 dark:text-indigo-400" /> masa depan bersama kami di{" "}
+        textClassName="text-white"
+ />   masa depan bersama kami di{" "}
             <Highlight className="text-black dark:text-white">
-              Pameran Jogja Comtek 2025.
+              Pameran Yogyakomtek 2025.
             </Highlight>
           </motion.h1>
         </HeroHighlight>

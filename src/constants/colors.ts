@@ -1,7 +1,9 @@
-export const BrandColors = {
-    orange: '#F97316', // oranye terang
-    yellow: '#FACC15', // kuning cerah
-    red: '#EF4444',    // merah soft
-    blue: '#3B82F6',   // biru cerah
-  };
-  
+// constants/colors.ts
+export const BrandColors = [
+  "#f5cf48", // kuning cerah
+  "#f4b74a", // oranye keemasan
+  "#d5603d", // merah bata
+  "#e62129", // merah terang
+  "#3c77c6", // biru cerah
+  "#2f318b", // biru tua
+];

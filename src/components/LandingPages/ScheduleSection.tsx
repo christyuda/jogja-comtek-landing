@@ -10,7 +10,7 @@ export function ScheduleSection() {
       content: (
         <div className="space-y-4 text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed transition-all duration-300">
           <p className="text-neutral-600 dark:text-neutral-400">
-            Pembukaan acara Jogja Comtek 2025 dan sambutan dari panitia serta keynote speaker dari industri teknologi nasional.
+            Pembukaan acara Yogyakomtek 2025 dan sambutan dari panitia serta keynote speaker dari industri teknologi nasional.
           </p>
           <ul className="space-y-3">
             <li className="hover:bg-neutral-100 dark:hover:bg-neutral-800/40 p-2 rounded-md transition">
@@ -98,7 +98,7 @@ export function ScheduleSection() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-5xl font-extrabold text-center text-neutral-900 dark:text-white mb-4 tracking-tight">
-          Jadwal Acara Jogja Comtek 2025
+          Jadwal Acara Yogyakomtek 2025
         </h2>
         <p className="text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-14 max-w-3xl mx-auto leading-relaxed">
           Simak berbagai sesi menarik selama dua hari pameran: keynote inspiratif, kompetisi teknologi, dan workshop interaktif.

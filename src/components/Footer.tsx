@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Kiri: Info copyright */}
         <div className="text-center md:text-left text-sm md:text-base font-medium tracking-wide">
-          &copy; {new Date().getFullYear()} <span className="font-semibold">Jogja Comtek</span>. All rights reserved.
+          &copy; {new Date().getFullYear()} <span className="font-semibold">Yogyakomtek</span>. All rights reserved.
         </div>
 
         {/* Kanan: Social Media */}

@@ -105,43 +105,41 @@ export const HeroHighlight = ({
 };
 
 
-
 export const Highlight = ({
-    children,
-    className,
-    fromColor = "from-indigo-300",
-    toColor = "to-purple-300",
-    darkFrom = "dark:from-indigo-500",
-    darkTo = "dark:to-purple-500",
-  }: {
-    children: React.ReactNode;
-    className?: string;
-    fromColor?: string;
-    toColor?: string;
-    darkFrom?: string;
-    darkTo?: string;
-  }) => {
-    return (
-      <motion.span
-        initial={{ backgroundSize: "0% 100%" }}
-        animate={{ backgroundSize: "100% 100%" }}
-        transition={{ duration: 2, ease: "linear", delay: 0.5 }}
-        style={{
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "left center",
-          display: "inline",
-        }}
-        className={cn(
-          `relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1`,
-          fromColor,
-          toColor,
-          darkFrom,
-          darkTo,
-          className
-        )}
-      >
-        {children}
-      </motion.span>
-    );
-  };
-  
+  children,
+  className,
+  fromColor = "from-[#f5cf48]",
+  toColor = "to-[#f4b74a]",
+  darkFrom = "dark:from-[#3c77c6]",
+  darkTo = "dark:to-[#2f318b]",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  fromColor?: string;
+  toColor?: string;
+  darkFrom?: string;
+  darkTo?: string;
+}) => {
+  return (
+    <motion.span
+      initial={{ backgroundSize: "0% 100%" }}
+      animate={{ backgroundSize: "100% 100%" }}
+      transition={{ duration: 2, ease: "linear", delay: 0.5 }}
+      style={{
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "left center",
+        display: "inline",
+      }}
+      className={cn(
+        `relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 text-white`,
+        fromColor,
+        toColor,
+        darkFrom,
+        darkTo,
+        className
+      )}
+    >
+      {children}
+    </motion.span>
+  );
+};

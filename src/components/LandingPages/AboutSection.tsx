@@ -26,7 +26,7 @@ export default function AboutSection() {
           />
           <Image
             src="/assets/images/jogja-comtek-banner.jpg"
-            alt="About Jogja Comtek"
+            alt="About Yogyakomtek 2025"
             width={500}
             height={400}
             className="w-full max-h-[400px] object-contain z-10 relative"
