@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function QRCodeSection() {
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-[#f5f5f5] to-[#eaeaea] dark:from-[#1a1a1a] dark:to-[#121212] px-4 flex justify-center">
+    <section id="joinus" className="w-full py-20 bg-gradient-to-b from-[#f5f5f5] to-[#eaeaea] dark:from-[#1a1a1a] dark:to-[#121212] px-4 flex justify-center">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 items-center gap-12 bg-white/70 dark:bg-white/10 backdrop-blur-xl rounded-3xl shadow-xl p-8 md:p-14 border border-gray-200 dark:border-white/20">
         
         {/* Left: QR Code */}

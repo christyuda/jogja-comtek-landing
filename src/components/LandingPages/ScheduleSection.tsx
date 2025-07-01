@@ -93,20 +93,24 @@ export function ScheduleSection() {
 
   return (
     <section
-      id="schedule"
-      className="py-24 md:py-28 bg-gradient-to-b from-white via-neutral-50 to-white dark:from-[#0f0f0f] dark:via-[#121212] dark:to-[#0f0f0f]"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-center text-neutral-900 dark:text-white mb-4 tracking-tight">
-          Jadwal Acara Yogyakomtek 2025
-        </h2>
-        <p className="text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-14 max-w-3xl mx-auto leading-relaxed">
-          Simak berbagai sesi menarik selama dua hari pameran: keynote inspiratif, kompetisi teknologi, dan workshop interaktif.
-        </p>
-        <div className="relative">
-          <Timeline data={data} />
-        </div>
-      </div>
-    </section>
+  id="schedule"
+  className="py-24 md:py-28 bg-gradient-to-b from-white via-neutral-50 to-white dark:from-[#0f0f0f] dark:via-[#121212] dark:to-[#0f0f0f]"
+>
+  {/* Header Section */}
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-center text-neutral-900 dark:text-white mb-4 tracking-tight">
+      Jadwal Acara Yogyakomtek 2025
+    </h2>
+    <p className="text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-14 max-w-3xl mx-auto leading-relaxed">
+      Simak berbagai sesi menarik selama dua hari pameran: keynote inspiratif, kompetisi teknologi, dan workshop interaktif.
+    </p>
+  </div>
+
+  {/* Timeline Full Width */}
+  <div className="relative w-full">
+    <Timeline data={data} />
+  </div>
+</section>
+
   );
 }

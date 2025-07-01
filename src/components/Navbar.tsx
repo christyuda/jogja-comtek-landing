@@ -86,7 +86,7 @@ export default function Navbar() {
             <span className="text-xl font-semibold text-white">
               <Link href="/">
                 <img
-                  src="/assets/logo/yogyakomtek.png"
+                  src="/assets/logo/new-logo-yogyakomtek.png"
                   alt="yogyakomtek"
                   className="h-12 w-auto"
                   width={200}
@@ -103,7 +103,7 @@ export default function Navbar() {
               onClick={(e) => handleSmoothScroll(e, "about")}
               className="relative group text-sm font-semibold text-white"
             >
-              TENTANG
+              ABOUT
               <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
             </a>
             <a
@@ -111,17 +111,32 @@ export default function Navbar() {
               onClick={(e) => handleSmoothScroll(e, "schedule")}
               className="relative group text-sm font-semibold text-white"
             >
-              JADWAL
+              SCHEDULE
               <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
-            </a>{" "}
-            {navItem("#", "EVENT")}
-            {navItem("#", "BLOG")}
-            {navItem("#", "CONTACT")}
+            </a>
+            <a
+              href="#location"
+              onClick={(e) => handleSmoothScroll(e, "location")}
+              className="relative group text-sm font-semibold text-white"
+            >
+              LOCATION
+              <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
+            </a>
+              <a
+              href="#joinus"
+              onClick={(e) => handleSmoothScroll(e, "joinus")}
+              className="relative group text-sm font-semibold text-white"
+            >
+              JOIN US
+              <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
+            </a>
+             
+         
           </div>
 
           <div className="flex items-center gap-4 text-white">
-            <FiShoppingCart className="hidden md:block text-lg cursor-pointer" />
-            <FiSearch className="hidden md:block text-lg cursor-pointer" />
+            {/* <FiShoppingCart className="hidden md:block text-lg cursor-pointer" /> */}
+            {/* <FiSearch className="hidden md:block text-lg cursor-pointer" /> */}
             <button
               className={`md:hidden text-2xl transition-transform duration-300 ${
                 isMobileMenuOpen ? "rotate-90 scale-125" : "rotate-0 scale-100"
@@ -169,30 +184,26 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="#" onClick={closeDrawer}>
-                SERVICES
+              <Link href="#schedule" onClick={closeDrawer}>
+                SCHEDULE
+              </Link>
+            </li>
+             <li>
+              <Link href="#location" onClick={closeDrawer}>
+                LOCATION
               </Link>
             </li>
             <li>
-              <Link href="#" onClick={closeDrawer}>
-                EVENT
+              <Link href="#joinus" onClick={closeDrawer}>
+                JOIN US
               </Link>
             </li>
-            <li>
-              <Link href="#" onClick={closeDrawer}>
-                BLOG
-              </Link>
-            </li>
-            <li>
-              <Link href="#" onClick={closeDrawer}>
-                CONTACT
-              </Link>
-            </li>
-            <li>
+
+            {/* <li>
               <button className="mt-4 w-full bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">
                 Buy Ticket →
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       )}

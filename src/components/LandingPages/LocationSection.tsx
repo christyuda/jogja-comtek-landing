@@ -14,7 +14,7 @@ const images = [
 
 export default function LocationSection() {
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 px-4">
+    <section id="location" className="w-full py-20 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 px-4">
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Title */}
         <motion.div
