@@ -180,7 +180,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="#about" onClick={closeDrawer}>
-                TENTANG
+                ABOUT
               </Link>
             </li>
             <li>
