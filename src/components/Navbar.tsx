@@ -52,11 +52,53 @@ export default function Navbar() {
     setTimeout(() => setIsDrawerVisible(false), 300);
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // threshold mobile
+    };
+
+    checkMobile(); // run once on mount
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const [isNightMode, setIsNightMode] = useState(false);
+
+  useEffect(() => {
+    const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    setIsNightMode(matchDark.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsNightMode(e.matches);
+    };
+
+    matchDark.addEventListener("change", handleChange);
+
+    return () => {
+      matchDark.removeEventListener("change", handleChange);
+    };
+  }, []);
+  const textColor = isNightMode ? "text-white" : "text-black";
+  const hoverBarColor =
+    "bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6]";
+  // useEffect(() => {
+  //   const currentHour = new Date().getHours();
+  //   setIsNightMode(currentHour >= 18 || currentHour < 6);
+  // }, []);
+
   const navItem = (href: string, label: string) => (
     <Link
       href={href}
       className={`relative group text-sm font-semibold ${
-        pathname === href ? "text-[#F97316]" : "text-white"
+        pathname === href
+          ? "text-[#F97316]"
+          : isNightMode
+          ? "text-white"
+          : "text-black"
       }`}
     >
       {label}
@@ -73,9 +115,29 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 z-50 w-full transition-all duration-300 ease-in-out ${
           scrolled
-            ? "bg-[#0A0A0A]/80 backdrop-blur-md shadow-lg border-b border-[#ffffff1a]"
-            : "bg-[#0A0A0A]"
+            ? isNightMode
+              ? "bg-[#0A0A0A]/80 backdrop-blur-md shadow-lg border-b border-[#ffffff1a]"
+              : "bg-white/90 shadow-md border-b border-gray-200"
+            : isNightMode
+            ? "bg-[#0A0A0A]"
+            : "bg-white"
         }`}
+        style={{
+          backgroundImage: `url('/assets/menubar/${
+            isNightMode ? "Menu-Bar-Night.png" : "Menu-Bar.png"
+          }')`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: isMobile
+            ? "cover" // responsif untuk HP
+            : scrolled
+            ? "100% 78px"
+            : "100% 96px",
+          backgroundPosition: "center",
+          backgroundPositionY: scrolled ? "center" : "center",
+
+          backgroundColor: isNightMode ? "#0A0A0A" : "#fff", // fallback
+          color: isNightMode ? "#fff" : "#000", // fallback text color
+        }}
       >
         <div
           className={`max-w-8xl mx-auto px-6 ${
@@ -101,42 +163,46 @@ export default function Navbar() {
             <a
               href="#about"
               onClick={(e) => handleSmoothScroll(e, "about")}
-              className="relative group text-sm font-semibold text-white"
+              className={`relative group text-sm font-semibold ${textColor}`}
             >
               ABOUT
-              <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
+              <span
+                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
+              />
             </a>
             <a
               href="#schedule"
               onClick={(e) => handleSmoothScroll(e, "schedule")}
-              className="relative group text-sm font-semibold text-white"
+              className={`relative group text-sm font-semibold ${textColor}`}
             >
               SCHEDULE
-              <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
+              <span
+                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
+              />
             </a>
             <a
               href="#location"
               onClick={(e) => handleSmoothScroll(e, "location")}
-              className="relative group text-sm font-semibold text-white"
+              className={`relative group text-sm font-semibold ${textColor}`}
             >
               LOCATION
-              <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
+              <span
+                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
+              />
             </a>
-              <a
+            <a
               href="#joinus"
               onClick={(e) => handleSmoothScroll(e, "joinus")}
-              className="relative group text-sm font-semibold text-white"
+              className={`relative group text-sm font-semibold ${textColor}`}
             >
               JOIN US
-              <span className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] w-0 group-hover:w-full transition-all duration-300" />
+              <span
+                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
+              />
             </a>
-             
-         
           </div>
 
           <div className="flex items-center gap-4 text-white">
-            {/* <FiShoppingCart className="hidden md:block text-lg cursor-pointer" /> */}
-            {/* <FiSearch className="hidden md:block text-lg cursor-pointer" /> */}
             <button
               className={`md:hidden text-2xl transition-transform duration-300 ${
                 isMobileMenuOpen ? "rotate-90 scale-125" : "rotate-0 scale-100"
@@ -145,9 +211,9 @@ export default function Navbar() {
             >
               <FiMenu />
             </button>
-            <button className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80">
+            {/* <button className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80">
               Buy Ticket →
-            </button>
+            </button> */}
           </div>
         </div>
       </nav>
@@ -163,47 +229,65 @@ export default function Navbar() {
 
       {isDrawerVisible && (
         <div
-          className={`fixed top-0 right-0 h-full w-64 bg-[#0A0A0A] text-white p-6 z-50 ${
+          className={`fixed top-0 right-0 h-full w-64 p-6 z-50 ${
             isMobileMenuOpen ? "animate-slideInRight" : "animate-slideOutRight"
           }`}
+          style={{
+            backgroundColor: isNightMode ? "#0A0A0A" : "#ffffff",
+            transition: "background-color 0.3s ease",
+          }}
         >
           <div className="flex justify-end mb-6">
-            <button onClick={closeDrawer} className="text-2xl">
+            <button onClick={closeDrawer} className={`text-2xl ${textColor}`}>
               <FiX />
             </button>
           </div>
           <ul className="flex flex-col gap-6 text-sm font-medium">
             <li>
-              <Link href="#" onClick={closeDrawer}>
+              <Link
+                href="#"
+                onClick={closeDrawer}
+                className={`${textColor} font-semibold`}
+              >
                 HOME
               </Link>
             </li>
             <li>
-              <Link href="#about" onClick={closeDrawer}>
+              <Link
+                href="#about"
+                onClick={closeDrawer}
+                className={`${textColor} font-semibold`}
+              >
                 ABOUT
               </Link>
             </li>
             <li>
-              <Link href="#schedule" onClick={closeDrawer}>
+              <Link
+                href="#schedule"
+                onClick={closeDrawer}
+                className={`${textColor} font-semibold`}
+              >
                 SCHEDULE
               </Link>
             </li>
-             <li>
-              <Link href="#location" onClick={closeDrawer}>
+            <li>
+              <Link
+                href="#location"
+                onClick={closeDrawer}
+                className={`${textColor} font-semibold`}
+              >
                 LOCATION
               </Link>
             </li>
             <li>
-              <Link href="#joinus" onClick={closeDrawer}>
+              <Link
+                href="#joinus"
+                onClick={closeDrawer}
+                className={`${textColor} font-semibold`}
+              >
                 JOIN US
               </Link>
             </li>
-
-            {/* <li>
-              <button className="mt-4 w-full bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">
-                Buy Ticket →
-              </button>
-            </li> */}
           </ul>
         </div>
       )}
