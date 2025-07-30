@@ -127,11 +127,7 @@ export default function Navbar() {
             isNightMode ? "Menu-Bar-Night.png" : "Menu-Bar.png"
           }')`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: isMobile
-            ? "cover" // responsif untuk HP
-            : scrolled
-            ? "100% 78px"
-            : "100% 96px",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundPositionY: scrolled ? "center" : "center",
 
@@ -211,9 +207,9 @@ export default function Navbar() {
             >
               <FiMenu />
             </button>
-            {/* <button className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80">
+            <button className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80">
               Buy Ticket →
-            </button> */}
+            </button>
           </div>
         </div>
       </nav>
