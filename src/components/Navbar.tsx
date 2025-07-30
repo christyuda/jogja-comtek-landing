@@ -127,19 +127,19 @@ export default function Navbar() {
             isNightMode ? "Menu-Bar-Night.png" : "Menu-Bar.png"
           }')`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundPositionY: scrolled ? "center" : "center",
+backgroundSize: "cover",
+backgroundPosition: "center",
+          
+          // backgroundPositionY: scrolled ? "center" : "center",
 
           backgroundColor: isNightMode ? "#0A0A0A" : "#fff", // fallback
           color: isNightMode ? "#fff" : "#000", // fallback text color
         }}
       >
         <div
-          className={`max-w-8xl mx-auto px-6 ${
-            scrolled ? "py-6" : "py-8"
-          } flex justify-between items-center`}
-        >
+  className={`max-w-8xl mx-auto px-6 h-24 flex justify-between items-center`} // h-24 = 96px
+>
+
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold text-white">
               <Link href="/">
