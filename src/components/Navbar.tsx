@@ -127,9 +127,9 @@ export default function Navbar() {
             isNightMode ? "Menu-Bar-Night.png" : "Menu-Bar.png"
           }')`,
           backgroundRepeat: "no-repeat",
-backgroundSize: "cover",
-backgroundPosition: "center",
-          
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+
           // backgroundPositionY: scrolled ? "center" : "center",
 
           backgroundColor: isNightMode ? "#0A0A0A" : "#fff", // fallback
@@ -137,18 +137,17 @@ backgroundPosition: "center",
         }}
       >
         <div
-  className={`max-w-8xl mx-auto px-6 h-24 flex justify-between items-center`} // h-24 = 96px
->
-
+          className={`max-w-8xl mx-auto px-6 h-24 flex justify-between items-center`} // h-24 = 96px
+        >
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold text-white">
               <Link href="/">
                 <img
-                  src="/assets/logo/new-logo-yogyakomtek.png"
+                  src="/assets/logo/new-fix-logo-yoygakomtek.png"
                   alt="yogyakomtek"
-                  className="h-12 w-auto"
-                  width={200}
-                  height={200}
+                  className="h-20 w-auto"
+                  width={250}
+                  height={250}
                 />
               </Link>
             </span>
