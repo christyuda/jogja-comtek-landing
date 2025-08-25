@@ -199,10 +199,7 @@ export function ScheduleSection() {
         <h2 className="text-3xl md:text-5xl font-extrabold text-center text-neutral-900 dark:text-white mb-4 tracking-tight">
           Jadwal Acara Yogyakomtek 2025
         </h2>
-        <p className="text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-14 max-w-3xl mx-auto leading-relaxed">
-          (Rundown versi tentatif — baris bertanda “Free” disembunyikan. “SC
-          Lt.2” ditulis sebagai “Student Center Lantai 2”.)
-        </p>
+        <p className="text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-14 max-w-3xl mx-auto leading-relaxed"></p>
       </div>
 
       <div className="relative w-full">
