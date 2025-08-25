@@ -12,9 +12,20 @@ const images = [
   "/assets/images/location1.jpg",
 ];
 
+// Link Google Maps place (sesuai permintaan)
+const MAPS_PLACE_URL =
+  "https://www.google.com/maps/place/Gelanggang+Inovasi+dan+Kreativitas+UGM/@-7.7742504,110.3735552,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5910f39cb25f:0xaab7386fd1291305!8m2!3d-7.7742504!4d110.3761355!16s%2Fg%2F11kjlx4931?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3DGelanggang Inovasi dan Kreativitas UGM";
+
+// Koordinat dari link di atas (untuk iframe embed)
+const LAT = -7.7742504;
+const LNG = 110.3761355;
+
 export default function LocationSection() {
   return (
-    <section id="location" className="w-full py-20 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 px-4">
+    <section
+      id="location"
+      className="w-full py-20 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 px-4"
+    >
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Title */}
         <motion.div
@@ -28,7 +39,8 @@ export default function LocationSection() {
             📍 Lokasi Acara Yogyakomtek
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Lihat lokasi venue dan suasana tempat secara langsung. Klik peta atau tombol di bawah untuk membuka langsung di Google Maps.
+            Lihat lokasi venue dan suasana tempat secara langsung. Klik peta
+            atau tombol di bawah untuk membuka langsung di Google Maps.
           </p>
         </motion.div>
 
@@ -70,29 +82,33 @@ export default function LocationSection() {
           {/* Right: Map & Button */}
           <div className="flex flex-col items-center space-y-4">
             <div className="relative w-full h-64 md:h-[350px] rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-white/10">
+              {/* Iframe diarahkan ke koordinat GIK UGM */}
               <iframe
-                src="https://www.google.com/maps?q=-7.801389,110.364722&hl=id&z=16&output=embed"
+                src={`https://www.google.com/maps?q=${LAT},${LNG}&hl=id&z=17&output=embed`}
                 width="100%"
                 height="100%"
                 loading="lazy"
                 style={{ border: 0 }}
                 allowFullScreen
-                title="Lokasi Venue"
+                title="Gelanggang Inovasi dan Kreativitas UGM (GIK UGM)"
               />
               <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/50 text-gray-800 dark:text-white text-sm font-semibold px-4 py-1 rounded-full shadow backdrop-blur-md">
-                🗺️ Lokasi Venue
+                🗺️ Gelanggang Inovasi & Kreativitas UGM
               </div>
             </div>
 
-            <p className="text-sm text-gray-500 dark:text-gray-400 italic">
-              🌐 Tampilan Penuh Lokasi Venue Acara
+            {/* Alamat lengkap */}
+            <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
+              Jl. Persatuan, Sendowo, Sinduadi, Kec. Depok, Kabupaten Sleman,
+              Daerah Istimewa Yogyakarta
             </p>
 
             <a
-              href="https://www.google.com/maps?q=-7.801389,110.364722"
+              href={MAPS_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-full shadow-md hover:brightness-110 transition-all"
+              aria-label="Buka lokasi Gelanggang Inovasi dan Kreativitas UGM di Google Maps"
             >
               📌 Buka di Google Maps
             </a>

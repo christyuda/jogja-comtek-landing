@@ -2,74 +2,142 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {GlowingEffect} from "@/components/ui/glowing-effect";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-white dark:bg-neutral-950">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        
-        {/* Ilustrasi */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <div className="relative w-full h-full">
-            <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <Image
-            src="/assets/images/jogja-comtek-banner.jpg"
-            alt="About Yogyakomtek 2025"
-            width={500}
-            height={400}
-            className="w-full max-h-[400px] object-contain z-10 relative"
-          />
-            <div className="absolute top-4 left-4 bg-gradient-to-r from-[#F97316] to-[#EF4444] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-              #JogjaComtek2025
+    <section id="about" className="relative bg-white dark:bg-neutral-950">
+      {/* ===== MOBILE (cover, content in-flow) ===== */}
+      <div className="md:hidden relative w-full">
+        {/* BG full cover */}
+        <div
+          className="absolute inset-0 bg-center bg-no-repeat bg-cover"
+          style={{
+            backgroundImage: "url('/assets/banner/about-bg.png')",
+            backgroundSize: "cover",
+          }}
+        />
+        {/* Content IN-FLOW (parent bakal nambah tinggi sesuai konten) */}
+        <div className="relative z-10 px-4 pt-24 pb-10 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="
+        w-full max-w-[18.5rem] sm:max-w-[20rem]
+        text-center
+        bg-white/90 dark:bg-neutral-900/85 backdrop-blur
+        rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,.28)]
+        ring-1 ring-black/5 dark:ring-white/10
+        p-4 sm:p-5
+      "
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold leading-tight mb-3">
+              <span className="bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] bg-clip-text text-transparent">
+                TENTANG YOGYAKOMTEK 2025
+              </span>
+            </h2>
+
+            <p className="text-[13px] sm:text-[14.5px] leading-6 text-neutral-800 dark:text-neutral-200">
+              Yogyakomtek 2025 kembali hadir sebagai edisi ke-28 dari rangkaian
+              pameran teknologi tahunan terbesar di Yogyakarta dan Jawa Tengah.
+              Tahun ini, Yogyakomtek mengusung semangat inovasi dan transformasi
+              digital dengan menghadirkan beragam teknologi terkini, zona AI
+              interaktif, serta promo spektakuler dari brand-brand IT ternama.
+              <br />
+              <br />
+              Temukan pengalaman pameran IT paling lengkap – dari perangkat
+              keras, software, gaming, hingga kreativitas digital – semuanya
+              hanya di Yogyakomtek 2025:{" "}
+              <strong>Artificial Intelligence Now!</strong>
+            </p>
+
+            {/* CTA Mobile */}
+            <div className="mt-4 flex flex-col gap-3">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://www.apkomjogja.org/tiket",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                aria-label="Daftar Sekarang"
+                className="w-full h-10 px-5 rounded-full font-semibold text-white shadow-lg shadow-black/20 bg-gradient-to-r from-[#F97316] to-[#EF4444] transition will-change-transform hover:scale-[1.02] active:scale-[.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
+              >
+                Daftar Sekarang →
+              </button>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </div>
 
-        {/* Konten */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 dark:text-white leading-tight mb-4">
-            <span className="bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] bg-clip-text text-transparent">
-              Tentang Yogyakomtek 2025
-            </span>
-          </h2>
+      {/* ===== DESKTOP (contain, exact image size) ===== */}
+      <div className="hidden md:block relative w-full">
+        {/* Use natural width/height so height follows the image exactly */}
+        <Image
+          src="/assets/banner/about-bg.png"
+          alt="About Yogyakomtek 2025"
+          width={1627} // match the actual image size
+          height={768}
+          priority
+          className="w-full h-auto object-contain"
+        />
 
-          <p className="text-neutral-600 dark:text-neutral-300 text-base md:text-lg mb-6 leading-relaxed">
-            Event teknologi terbesar di Yogyakarta yang menyatukan <strong>inovator, pelajar, profesional</strong> hingga komunitas digital dalam satu ruang eksplorasi masa depan.
-          </p>
+        {/* Overlay text aligned to the right */}
+        <div className="absolute inset-0 flex items-center justify-end px-10 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-xl lg:max-w-2xl text-right ml-auto"
+          >
+            <h2 className="text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
+              <span className="bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] bg-clip-text text-transparent">
+                TENTANG YOGYAKOMTEK 2025
+              </span>
+            </h2>
+            <p className="text-base lg:text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
+              Yogyakomtek 2025 kembali hadir sebagai edisi ke-28 dari rangkaian
+              pameran teknologi tahunan terbesar di Yogyakarta dan Jawa Tengah.
+              Tahun ini, Yogyakomtek mengusung semangat inovasi dan transformasi
+              digital dengan menghadirkan beragam teknologi terkini, zona AI
+              interaktif, serta promo spektakuler dari brand-brand IT ternama.
+              <br />
+              <br />
+              Temukan pengalaman pameran IT paling lengkap – dari perangkat
+              keras, software, gaming, hingga kreativitas digital – semuanya
+              hanya di Yogyakomtek 2025:{" "}
+              <strong>Artificial Intelligence Now!</strong>
+            </p>
 
-          <ul className="space-y-3 text-neutral-700 dark:text-neutral-200 text-sm md:text-base mb-8">
-            <li>🚀 Eksplorasi AI, IoT, dan teknologi futuristik</li>
-            <li>🎙️ Talkshow bersama expert industri</li>
-            <li>🛠️ Workshop & kompetisi inovasi</li>
-            <li>🎉 Terbuka untuk umum & GRATIS!</li>
-          </ul>
-
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-gradient-to-r from-[#F97316] to-[#EF4444] text-white px-6 py-2 rounded-full font-semibold shadow-md hover:scale-105 transition">
-                Lihat Jadwal →
-            </button>
-            <button className="border border-neutral-300 dark:border-neutral-700 px-6 py-2 rounded-full font-medium text-neutral-700 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
-              Daftar Sekarang
-            </button>
-          </div>
-        </motion.div>
+            {/* CTA Desktop (sudah ada) */}
+            <div className="mt-6 flex flex-col sm:flex-row items-center sm:justify-end gap-3 sm:gap-4">
+              <button
+                aria-label="Daftar Sekarang"
+                onClick={() =>
+                  window.open(
+                    "https://www.apkomjogja.org/tiket",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                className="
+                  w-full sm:w-auto h-11
+                  px-6 rounded-full font-semibold text-white
+                  shadow-lg shadow-black/20
+                  bg-gradient-to-r from-[#F97316] to-[#EF4444]
+                  transition will-change-transform
+                  hover:scale-[1.02] active:scale-[.98]
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2
+                "
+              >
+                Daftar Sekarang →
+              </button>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

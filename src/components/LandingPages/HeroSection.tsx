@@ -1,6 +1,6 @@
 // components/landing/HeroSection.tsx
 
-'use client';
+"use client";
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -9,9 +9,12 @@ import { FaArrowRight } from "react-icons/fa";
 import { FiMapPin, FiClock } from "react-icons/fi";
 
 const images = [
-  "https://images.unsplash.com/photo-1485433592409-9018e83a1f0d?q=80&w=1814&auto=format&fit=crop&ixlib=rb-4.0.3",
-  "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3",
-  "https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3",
+  "/assets/banner/banner-1.jpg",
+  "/assets/banner/banner-2.jpg",
+  "/assets/banner/banner-3.jpg",
+  "/assets/banner/banner-4.jpg",
+  "/assets/banner/banner-5.jpg",
+  "/assets/banner/banner-6.jpg",
 ];
 
 export default function HeroSection() {
@@ -29,63 +32,92 @@ export default function HeroSection() {
     <motion.section
       ref={ref}
       style={{ opacity, scale }}
-        className="relative h-screen w-screen text-white overflow-hidden"
-
+      className="relative h-screen w-screen text-white overflow-hidden"
     >
-      <ImagesSlider className="h-full w-full" images={images} autoplay direction="right">
+      <ImagesSlider
+        className="h-full w-full"
+        images={images}
+        autoplay
+        direction="right"
+      >
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="z-50 flex flex-col justify-center items-center h-full text-center px-4"
         >
-          <motion.p
-            className="uppercase text-sm tracking-widest text-gray-300 mb-2"
+          <motion.img
+            src="/assets/logo/new-fix-logo-yoygakomtek.png"
+            alt="YogyaKomtek Logo"
+            width={200}
+            height={200}
+            className="h-16 md:h-24 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-          >
-            YogyaKomtek 2025
-          </motion.p>
+          />
 
+          {/* Headline */}
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400"
+            className="px-3 text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight
+                       text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]"
+            style={
+              {
+                // tipis-outline biar seperti poster
+                WebkitTextStroke: "0.6px rgba(10, 23, 60, 0.6)",
+              } as React.CSSProperties
+            }
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.45 }}
           >
-            DISCOVER A WORLD <br />
-            <span className="text-yellow-400">OF INNOVATION</span>
+            PAMERAN KOMPUTER & IT <br className="hidden sm:block" />
+            <span className="text-[#F4C542] bg-clip-text">
+              TERBESAR • TERLENGKAP • TERKINI
+            </span>
           </motion.h1>
 
+          {/* Subheadline */}
           <motion.p
-            className="text-base md:text-lg text-gray-300 max-w-xl mt-6"
-            initial={{ opacity: 0, y: 40 }}
+            className="max-w-3xl text-sm md:text-lg text-gray-200/
+90 px-4
+                       drop-shadow-[0_3px_12px_rgba(0,0,0,0.6)]"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
+            transition={{ delay: 0.75 }}
           >
-            Yogyakomtek 2025 hadir sebagai pameran teknologi dan inovasi terbesar — penuh promo, hiburan, dan solusi masa depan!
+            Yogyakomtek 2025 hadir sebagai pameran teknologi dan inovasi
           </motion.p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 text-sm text-gray-300"
-            initial={{ opacity: 0, y: 40 }}
+          <motion.p
+            className="max-w-3xl text-sm md:text-lg text-gray-200/
+90 px-4
+                       drop-shadow-[0_3px_12px_rgba(0,0,0,0.6)]"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
+            transition={{ delay: 0.75 }}
           >
-            <p className="flex items-center gap-2"><FiMapPin /> Jogja Expo Center</p>
-            <p className="flex items-center gap-2"><FiClock /> 10 AM - 10 PM, 20 April 2025</p>
-          </motion.div>
+            terbesar — penuh promo, hiburan, dan solusi masa depan!
+          </motion.p>
 
-          <motion.button
-            className="mt-8 px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-red-500 to-blue-500 hover:scale-105 transition-all duration-300 shadow-md flex items-center gap-2"
-            initial={{ opacity: 0, y: 40 }}
+          {/* Date big & Location */}
+          <motion.div
+            className="mt-6 md:mt-8 flex flex-col items-center gap-3"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
-            onClick={() => document.getElementById("highlight")?.scrollIntoView({ behavior: "smooth" })}
+            transition={{ delay: 0.8 }}
           >
-            Purchase Ticket <FaArrowRight className="group-hover:translate-x-1 transition" />
-          </motion.button>
+            <p
+              className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-[#FFC02E]
+                         drop-shadow-[0_6px_24px_rgba(0,0,0,0.5)]"
+            >
+              27 September – 01 Oktober 2025
+            </p>
+            <p className="flex items-center gap-2 text-lg md:text-2xl font-semibold text-white">
+              <FiMapPin className="shrink-0" />
+              GIK UGM
+            </p>
+          </motion.div>
         </motion.div>
       </ImagesSlider>
     </motion.section>

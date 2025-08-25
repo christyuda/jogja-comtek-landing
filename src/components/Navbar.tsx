@@ -124,7 +124,7 @@ export default function Navbar() {
         }`}
         style={{
           backgroundImage: `url('/assets/menubar/${
-            isNightMode ? "Menu-Bar-Night.png" : "Menu-Bar.png"
+            isNightMode ? "Menu-Bar-Night-New.png" : "Menu-Bar-Day-New.png"
           }')`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -206,9 +206,14 @@ export default function Navbar() {
             >
               <FiMenu />
             </button>
-            <button className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80">
-              Buy Ticket →
-            </button>
+            <a
+              href="https://www.apkomjogja.org/tiket"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80"
+            >
+              Pesan Tiket →
+            </a>
           </div>
         </div>
       </nav>
