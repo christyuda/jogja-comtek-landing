@@ -38,8 +38,8 @@ export default function AboutSection() {
               </span>
             </h2>
 
-            <p className="text-[13px] sm:text-[14.5px] leading-6 text-neutral-800 dark:text-neutral-200">
-              Yogyakomtek 2025 kembali hadir sebagai edisi ke-28 dari rangkaian
+            <p className="text-[13px] sm:text-[14.5px] leading-6 text-black">
+            Yogyakomtek 2025 kembali hadir sebagai edisi ke-28 dari rangkaian
               pameran teknologi tahunan terbesar di Yogyakarta dan Jawa Tengah.
               Tahun ini, Yogyakomtek mengusung semangat inovasi dan transformasi
               digital dengan menghadirkan beragam teknologi terkini, zona AI
@@ -98,7 +98,7 @@ export default function AboutSection() {
                 TENTANG YOGYAKOMTEK 2025
               </span>
             </h2>
-            <p className="text-base lg:text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
+            <p className="text-base lg:text-lg leading-relaxed text-black">
               Yogyakomtek 2025 kembali hadir sebagai edisi ke-28 dari rangkaian
               pameran teknologi tahunan terbesar di Yogyakarta dan Jawa Tengah.
               Tahun ini, Yogyakomtek mengusung semangat inovasi dan transformasi
