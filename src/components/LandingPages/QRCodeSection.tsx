@@ -42,7 +42,7 @@ export default function QRCodeSection() {
               className="rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70"
             >
               <Image
-                src="/assets/images/qr-code-tiket.png"
+                src="/assets/barcode/jogja-barcode.png"
                 alt="Yogyakomtek QR Code"
                 width={250}
                 height={250}
