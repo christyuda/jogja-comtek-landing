@@ -7,9 +7,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const images = [
-  "/assets/images/location1.jpg",
-  "/assets/images/location1.jpg",
-  "/assets/images/location1.jpg",
+  "/assets/events/event-1.jpg",
+  "/assets/events/event-2.jpg",
+  "/assets/events/event-3.jpg",
 ];
 
 // Link Google Maps place (sesuai permintaan)
