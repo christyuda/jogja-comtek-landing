@@ -8,7 +8,6 @@ const VenueChip = ({ children }: { children: React.ReactNode }) => (
     {children}
   </span>
 );
-
 export function ScheduleSection() {
   const data = [
     {
@@ -25,9 +24,25 @@ export function ScheduleSection() {
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              12.00 – 14.00
+            </span>{" "}
+            Ramah Tamah (Undangan)
+            <VenueChip>Ruang Co Learning</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               14.00 – 17.00
             </span>{" "}
-            Seminar Komik (HUION)
+            Coswalk Competition (Vokasi UGM)
+            <VenueChip>Student Center Lantai 2</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              14.00 – 17.00
+            </span>{" "}
+            Seminar Komik “Jadi Komikus Harus Serius” (HUION)
             <VenueChip>Student Center Lantai 2</VenueChip>
           </div>
 
@@ -35,7 +50,7 @@ export function ScheduleSection() {
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               18.00 – 21.00
             </span>{" "}
-            ASUS KPOP Dance Showcase (EIS)
+            ASUS KPOP Dance Showcase (ELS)
             <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
         </div>
@@ -50,7 +65,7 @@ export function ScheduleSection() {
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               10.00 – 13.00
             </span>{" "}
-            Lomba Menggambar SD (ISI – HUION)
+            Lomba Menggambar SD “Kita & Teknologi” (ISI – HUION)
             <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
 
@@ -58,23 +73,32 @@ export function ScheduleSection() {
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               14.00 – 17.00
             </span>{" "}
-            Robotic FOOTBALL TD (Vokasi UGM)
-            <VenueChip>Joglo (GIK UGM)</VenueChip>
-          </div>
-
-          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
-            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-              14.00 – 17.00
-            </span>{" "}
-            Seminar / Workshop Komik (ISI)
+            Seminar Komik “Dari Imajinasi Jadi Ilustrasi” (ISI)
             <VenueChip>Student Center Lantai 2</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              14.00 – 17.00
+            </span>{" "}
+            Kompetisi Robot Soccer (Vokasi UGM) & ROG Street Fighter 6 Tournament (ELS)
+            <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               18.00 – 21.00
             </span>{" "}
-            PEGASTORE BAND COMPETITION – I<VenueChip>Joglo (GIK UGM)</VenueChip>
+            PEGAFEST Band Competition – I
+            <VenueChip>Joglo (GIK UGM)</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              18.00 – 21.00
+            </span>{" "}
+            GameLAN Meet Up
+            <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
         </div>
       ),
@@ -96,23 +120,15 @@ export function ScheduleSection() {
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               14.00 – 17.00
             </span>{" "}
-            Robotic SUMO TD (Vokasi UGM)
+            Seminar ACER
             <VenueChip>Joglo (GIK UGM)</VenueChip>
-          </div>
-
-          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
-            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-              14.00 – 17.00
-            </span>{" "}
-            Seminar AI – Sesi 1 (FMIPA UGM)
-            <VenueChip>Student Center Lantai 2</VenueChip>
           </div>
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               18.00 – 21.00
             </span>{" "}
-            PEGASTORE BAND COMPETITION – II
+            PEGAFEST Band Competition – II
             <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
         </div>
@@ -125,9 +141,17 @@ export function ScheduleSection() {
         <div className="space-y-3 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              10.00 – 13.00
+            </span>{" "}
+            Seminar “Menjadi Pekerja Kreatif di Era AI” (DOSS × SONY)
+            <VenueChip>Student Center Lantai 2</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               14.00 – 17.00
             </span>{" "}
-            Seminar AI – Sesi 2 (FMIPA UGM)
+            Seminar AI “Robot Cerdas untuk Semua” (FMIPA UGM)
             <VenueChip>Student Center Lantai 2</VenueChip>
           </div>
 
@@ -135,7 +159,7 @@ export function ScheduleSection() {
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               18.00 – 21.00
             </span>{" "}
-            PEGASTORE BAND COMPETITION – III
+            PEGAFEST Band Competition – III
             <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
         </div>
@@ -148,10 +172,26 @@ export function ScheduleSection() {
         <div className="space-y-3 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              10.00 – 13.00
+            </span>{" "}
+            Seminar “AI as Company Solutions” (ELS × LENOVO)
+            <VenueChip>Student Center Lantai 2</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
               14.00 – 17.00
             </span>{" "}
-            Seminar Animasi AI (AMIKOM)
+            Seminar “Membuat Film Animasi Kelas Dunia” (AMIKOM)
             <VenueChip>Student Center Lantai 2</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              17.00 – 18.00
+            </span>{" "}
+            Final Battle Speed Drawing Contest (HUION)
+            <VenueChip>Joglo (GIK UGM)</VenueChip>
           </div>
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
@@ -164,7 +204,15 @@ export function ScheduleSection() {
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
             <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-              18.00 – 19.15
+              18.00 – 21.00
+            </span>{" "}
+            Pengumuman Pemenang Lomba
+            <VenueChip>Joglo (GIK UGM)</VenueChip>
+          </div>
+
+          <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              19.00 – 19.15
             </span>{" "}
             Band Perform (Juara 1 & 2)
             <VenueChip>Joglo (GIK UGM)</VenueChip>
@@ -190,21 +238,190 @@ export function ScheduleSection() {
     },
   ];
 
-  return (
-    <section
-      id="schedule"
-      className="py-24 md:py-28 bg-gradient-to-b from-white via-neutral-50 to-white dark:from-[#0f0f0f] dark:via-[#121212] dark:to-[#0f0f0f]"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-center text-neutral-900 dark:text-white mb-4 tracking-tight">
-          Jadwal Acara Yogyakomtek 2025
-        </h2>
-        <p className="text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-14 max-w-3xl mx-auto leading-relaxed"></p>
-      </div>
+  const subActivities = [
+  {
+    title: "Sabtu, 27 September 2025",
+    content: (
+      <div className="space-y-3 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            09.00 – 21.00
+          </span>{" "}
+          Games Changer: NVIDIA GeForce Fans Party
+          <VenueChip>C1 - 004</VenueChip>
+        </div>
 
-      <div className="relative w-full">
-        <Timeline data={data} />
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            09.00 – 17.00
+          </span>{" "}
+          Introduction National Vibe Coding Competition
+          <VenueChip>C1 - 011</VenueChip>
+        </div>
+
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            18.00 – 21.00
+          </span>{" "}
+          Workshop Kurasi Karya
+          <VenueChip>C1 - 006</VenueChip>
+        </div>
       </div>
-    </section>
+    ),
+  },
+
+  {
+    title: "Minggu, 28 September 2025",
+    content: (
+      <div className="space-y-3 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas A – VIBE CODING (Xerphian) <VenueChip>C1 - 004</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas B – CREATIVE CONTENT (Xerphian) <VenueChip>C1 - 006</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas C – ACADEMIC & WRITING (Xerphian){" "}
+          <VenueChip>C1 - 007</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas D – MUSIC & ART (Xerphian) <VenueChip>C1 - 011</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">18.00 – 21.00</span>{" "}
+          Workshop Kurasi Karya <VenueChip>C1 - 006</VenueChip>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    title: "Senin, 29 September 2025",
+    content: (
+      <div className="space-y-3">
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas A – VIBE CODING (Xerphian) <VenueChip>C1 - 004</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas B – CREATIVE CONTENT (Xerphian) <VenueChip>C1 - 006</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas C – ACADEMIC & WRITING (Xerphian){" "}
+          <VenueChip>C1 - 007</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas D – MUSIC & ART (Xerphian) <VenueChip>C1 - 011</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">18.00 – 21.00</span>{" "}
+          Workshop Kurasi Karya <VenueChip>C1 - 006</VenueChip>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    title: "Selasa, 30 September 2025",
+    content: (
+      <div className="space-y-3">
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas A – VIBE CODING (Xerphian) <VenueChip>C1 - 004</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas B – CREATIVE CONTENT (Xerphian) <VenueChip>C1 - 006</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas C – ACADEMIC & WRITING (Xerphian){" "}
+          <VenueChip>C1 - 007</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Kelas D – MUSIC & ART (Xerphian) <VenueChip>C1 - 011</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">18.00 – 21.00</span>{" "}
+          Workshop Kurasi Karya <VenueChip>C1 - 006</VenueChip>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    title: "Rabu, 1 Oktober 2025",
+    content: (
+      <div className="space-y-3">
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 12.00</span>{" "}
+          Seminar “Solar Panel Philips” by Pegastore{" "}
+          <VenueChip>C1 - 007</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 12.00</span>{" "}
+          Seminar “Solar Panel Philips” by Pegastore{" "}
+          <VenueChip>C1 - 009</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Penjurian Lomba National Vibe Coding{" "}
+          <VenueChip>C1 - 011</VenueChip>
+        </div>
+        <div>
+          <span className="font-semibold text-green-600">09.00 – 17.00</span>{" "}
+          Workshop Kurasi Karya <VenueChip>C1 - 006</VenueChip>
+        </div>
+      </div>
+    ),
+  },
+];
+
+
+  return (
+    <>
+      {/* MAIN ACTIVITIES */}
+      <section id="schedule" className="py-24 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-4">
+            Jadwal Acara Yogyakomtek 2025
+          </h2>
+          <p className="text-center text-neutral-600 dark:text-neutral-400 mb-10">
+            Main Activities (Joglo & Student Center Lt.2)
+          </p>
+        </div>
+        <div className="relative w-full">
+          <Timeline data={data} />
+        </div>
+      </section>
+
+      {/* SUB ACTIVITIES */}
+      <section
+        id="subactivities"
+        className="py-24 md:py-28 bg-neutral-50 dark:bg-[#121212]"
+      >
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-4">
+            Sub Activities
+          </h2>
+          <p className="text-center text-neutral-600 dark:text-neutral-400 mb-10">
+            Workshop & Classes (Ruang C1)
+          </p>
+        </div>
+        <div className="relative w-full">
+          <Timeline data={subActivities} />
+        </div>
+      </section>
+    </>
   );
+
+  
 }
