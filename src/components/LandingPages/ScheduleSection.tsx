@@ -385,6 +385,81 @@ export function ScheduleSection() {
   },
 ];
 
+const otherActivities = [
+  {
+    title: "Sabtu–Rabu, 27 Sept – 1 Okt 2025",
+    content: (
+      <div className="space-y-3 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+            5 days
+          </span>{" "}
+          Lomba Foto
+          <VenueChip>All Area</VenueChip>
+        </div>
+
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+            5 days
+          </span>{" "}
+          Lomba Reels
+          <VenueChip>All Area</VenueChip>
+        </div>
+
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+            5 days
+          </span>{" "}
+          Digital Stamp
+          <VenueChip>All Area</VenueChip>
+        </div>
+      </div>
+    ),
+  },
+];
+
+const experienceZones = [
+  {
+    title: "Sabtu–Rabu, 27 Sept – 1 Okt 2025",
+    content: (
+      <div className="space-y-3 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            5 days
+          </span>{" "}
+          Prodi ELINS FMIPA UGM (AI)
+          <VenueChip>SPC-X SC</VenueChip>
+        </div>
+
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            5 days
+          </span>{" "}
+          Univ. AMIKOM (ANIMASI)
+          <VenueChip>SPC-Y SC</VenueChip>
+        </div>
+
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            5 days
+          </span>{" "}
+          ISI DKV (Gambar Desainer)
+          <VenueChip>Selasar SC</VenueChip>
+        </div>
+
+        <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            5 days
+          </span>{" "}
+          Demo Produk BLUEPRINT
+          <VenueChip>Selasar SC</VenueChip>
+        </div>
+      </div>
+    ),
+  },
+];
+
+
 
   return (
     <>
@@ -420,6 +495,36 @@ export function ScheduleSection() {
           <Timeline data={subActivities} />
         </div>
       </section>
+      {/* OTHER ACTIVITIES */}
+<section id="other-activities" className="py-24 md:py-28 bg-white dark:bg-[#0f0f0f]">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-4">
+      Other Activities
+    </h2>
+    <p className="text-center text-neutral-600 dark:text-neutral-400 mb-10">
+      Static activities across all areas
+    </p>
+  </div>
+  <div className="relative w-full">
+    <Timeline data={otherActivities} />
+  </div>
+</section>
+
+{/* EXPERIENCE & EXHIBITION ZONE */}
+<section id="experience-exhibition" className="py-24 md:py-28 bg-neutral-50 dark:bg-[#121212]">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-4">
+      Experience & Exhibition Zone
+    </h2>
+    <p className="text-center text-neutral-600 dark:text-neutral-400 mb-10">
+      SPC/Student Center showcases (5 days)
+    </p>
+  </div>
+  <div className="relative w-full">
+    <Timeline data={experienceZones} />
+  </div>
+</section>
+
     </>
   );
 

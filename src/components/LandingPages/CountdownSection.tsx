@@ -22,13 +22,22 @@ export default function CountdownSection() {
       seconds: Math.floor((difference / 1000) % 60),
     };
   }
+useEffect(() => {
+  const interval = setInterval(() => {
+    const remaining = getTimeRemaining();
+    setTimeLeft(remaining);
+    if (
+      remaining.days === 0 &&
+      remaining.hours === 0 &&
+      remaining.minutes === 0 &&
+      remaining.seconds === 0
+    ) {
+      clearInterval(interval);
+    }
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(getTimeRemaining());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="relative flex flex-col items-center justify-center w-full min-h-screen px-6 py-20 overflow-hidden">
