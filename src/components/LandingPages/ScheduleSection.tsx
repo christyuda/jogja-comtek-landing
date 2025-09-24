@@ -520,7 +520,7 @@ export function ScheduleSection() {
             <span className="font-semibold" style={subTimeStyle}>
               5 days
             </span>{" "}
-            Prodi ELINS FMIPA UGM (AI)
+            SmartZone: Dive Into the World of AI & Robotics!
             <VenueChip>SC Lantai 1</VenueChip>
           </div>
 
@@ -528,7 +528,7 @@ export function ScheduleSection() {
             <span className="font-semibold" style={subTimeStyle}>
               5 days
             </span>{" "}
-            Univ. AMIKOM (ANIMASI)
+            Animation Zone AMIKOM
             <VenueChip>SC Lantai 1</VenueChip>
           </div>
 
@@ -536,7 +536,7 @@ export function ScheduleSection() {
             <span className="font-semibold" style={subTimeStyle}>
               5 days
             </span>{" "}
-            ISI DKV (Gambar Desainer)
+            Seni Gambar Sekuensial Showcase DKV ISI Yogyakarta
             <VenueChip>Selasar SC</VenueChip>
           </div>
 
@@ -544,7 +544,7 @@ export function ScheduleSection() {
             <span className="font-semibold" style={subTimeStyle}>
               5 days
             </span>{" "}
-            Demo Produk BLUEPRINT
+            Demo Produk Blueprint
             <VenueChip>Selasar SC</VenueChip>
           </div>
         </div>
