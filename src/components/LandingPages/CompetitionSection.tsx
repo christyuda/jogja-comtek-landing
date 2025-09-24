@@ -24,144 +24,132 @@ const drivePreviewSrc = (url: string) => {
   return id ? `https://drive.google.com/file/d/${id}/preview` : url;
 };
 
+const IMG = (f: string) => `/assets/competition/${f}`;
+
 const COMPETITIONS: CompetitionItem[] = [
   {
     title: "Coswalk Competition",
-    imageUrl:
-      "https://drive.google.com/file/d/1N3yOAfDCJgxwqnfoI2sWLZasn7Ok36xJ/view",
+    imageUrl: IMG("Coswalk Pegastore.jpg"),
     href: "https://www.instagram.com/p/DOEJTfHkhX8/?img_index=1",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Lomba Menggambar Tingkat SD",
-    imageUrl:
-      "https://drive.google.com/file/d/1fJluMkAVhb06ZeQ_-L2dIFuPZtpySAgQ/view",
+    imageUrl: IMG("gambar-anak_01.png"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLSfT_hyucRsmfn8d5XcJbos2Qeb8S-OSGzv_3vJM1R_mnRmfqw/viewform",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Talkshow: Racking Up Riches Via Freelancing In Video Game Development",
-    imageUrl:
-      "https://drive.google.com/file/d/19bja3UHmwUjGpc4LMDCHVdSkjqRjO9KD/view",
+    imageUrl: IMG("GameLAN.jpeg"),
     href: "https://www.instagram.com/p/DO-SsiVidS6/",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Pegafest Band Competition",
-    imageUrl:
-      "https://drive.google.com/file/d/1-iUh_khSKQYEqc0x_NAjhv4ZrTfBzsk_/view",
+    imageUrl: IMG("Lomba Band Pegastore.jpg"),
     href: "https://www.instagram.com/p/DOSJJ9aj7D2/",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Lomba Foto & Video",
-    imageUrl:
-      "https://drive.google.com/file/d/1b_Bfx4CrLsaQltPwFYbGJiLuZQHIXvXd/view",
+    imageUrl: IMG("Lomba Foto & Video.png"),
     href: "https://www.instagram.com/p/DOvGtNfCaEU/?img_index=1",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Speed Drawing Contest",
-    imageUrl:
-      "https://drive.google.com/file/d/17SctUrmgyzxzClN3NLHUX6iaFzBnx_5z/view",
+    imageUrl: IMG("Lomba Speed Drawing.png"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLSenu6fS8h_e8kP-oKFcVAYehpATJk1J04GCd1o895XQdQLOFw/viewform",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Street Fighter Tournament",
-    imageUrl:
-      "https://drive.google.com/file/d/1UzHLoSJHLr1I4qHmayTXUKMmmNgnHvIv/view",
+    imageUrl: IMG("Lomba Street Fighter ELS.jpg"),
     href: "https://www.instagram.com/p/DOVDBSKkg08/",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Kompetisi Robot Soccer",
-    imageUrl:
-      "https://drive.google.com/file/d/1bk56SLp0NagdusJJN4CkvWpEJEJTmymP/view",
+    imageUrl: IMG("Robot Soccer.png"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLScaRYl0345u8mHUyVkvrM-leZFxIu_nVOFme2AVgb32pvkO-A/viewform",
     tag: "Kompetisi",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Seminar Komik Bareng Dosen ISI Yogyakarta",
-    imageUrl:
-      "https://drive.google.com/file/d/1z_XtXC4c6rdFhq6BTy61_sdi4M3Y4Lxb/view",
+    imageUrl: IMG("Seminar 1 (1).png"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLSdlJBi50JwcPswSh_L5nVqUjLyGXsYxyew9jNuTHl5a6QN63w/viewform",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Membuat Film Animasi Kelas Dunia Dengan Post Production",
-    imageUrl:
-      "https://drive.google.com/file/d/1ntDDPmKMmfVbns2mung32T-qHxc7IdlA/view",
+    imageUrl: IMG("Seminar Animasi AMIKOM-min (1).jpg"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLSeNur2lEWCQ3uUdvYFMDU3ajCWSuQmcKBoAMgVUX3oIXksiew/viewform",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Hulon Yogyakomtek: Poteinsi IP(Intellectual Property) Karakter Komik",
-    imageUrl:
-      "https://drive.google.com/file/d/13PJrCHbCjLpSANmjVMo2tTdcGzecAU4F/view",
+    imageUrl: IMG("Seminar Komik Huion (1).png"),
     href: "https://bit.ly/seminarhuion",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Hulon Yogyakomtek: Dari Imaginasi ke Industri dengan Concept Art untuk Games/ VFX",
-    imageUrl:
-      "https://drive.google.com/file/d/1Mu6KSUKodvebNUGtRNySZabBK4MQlxAC/view",
+    imageUrl: IMG("Seminar Komik Huion_Mas Is (1).png"),
     href: "https://bit.ly/seminarhuion",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Seminar Komik: Jadi Komikus Itu Harus Serius",
-    imageUrl:
-      "https://drive.google.com/file/d/1A_mwzDLFMdorQCYlvGAI_DV0um7fyVT2/view",
+    imageUrl: IMG("Seminar Komik Huion_Mas Yogi (1).png"),
     href: "https://bit.ly/seminarhuion",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Game Changer",
-    imageUrl:
-      "https://drive.google.com/file/d/1ef1eQvGhiFigmreR8kzlPAB8NZJ-fY52/view",
+    imageUrl: IMG("Seminar NVIDIA (1).png"),
     href: "https://event.kimcommunication.com/eb14e19c",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Coswalk Competition",
-    imageUrl:
-      "https://drive.google.com/file/d/1Z7g0VR_WAEEAZVDeDNzwESQc0JQpeH7x/view",
+    imageUrl: IMG("Seminar Robot Cerdas Untuk Semua (1).png"),
     href: "https://bit.ly/DaftarSeminarRobotik",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Showcase KPOP Dance",
-    imageUrl:
-      "https://drive.google.com/file/d/1Ki7akqAV2sfaB4pdHe-HAzqIw9JfkLSL/view",
+    imageUrl: IMG("Showcase KPOP Dance ELS.jpg"),
     href: "https://www.instagram.com/p/DOP41D8ETnm/?img_index=1",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
   {
     title: "Workshop Kurasi 1 On 1",
-    imageUrl:
-      "https://drive.google.com/file/d/1r00k1SLQcbV7aYY1I1lCwmk0ZnCyb-8n/view",
+    imageUrl: IMG("Workshop Kurasi 1 on 1 (1).png"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLSeJdgNouVkpQAeImWTa2eHzu-DjSi8uyvq7CfxU9OJO_35JhA/viewform",
     tag: "Seminar",
-    useIframe: true, 
+    useIframe: false,
   },
 ];
+
+export default COMPETITIONS;
+
 
 function Media({ item }: { item: CompetitionItem }) {
   if (item.useIframe) {
