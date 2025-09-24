@@ -161,14 +161,6 @@ const COMPETITIONS: CompetitionItem[] = [
     tag: "Seminar",
     useIframe: true, 
   },
-  {
-    title: "Smart Tech, Smarter Future. Artifical Intelligence Now!",
-    imageUrl:
-      "https://drive.google.com/file/d/1ENLn7brOHSQvYTxrcawZmqfIYBHHGyzB/view",
-    href: "-",
-    tag: "Seminar",
-    useIframe: true, 
-  },
 ];
 
 function Media({ item }: { item: CompetitionItem }) {
