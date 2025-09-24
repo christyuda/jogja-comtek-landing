@@ -1,17 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { FiShoppingCart, FiSearch, FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import { getLenisInstance } from "@/hooks/useSmoothScroll";
 
+/** === Config === */
+type NavItem = { key: string; label: string; targetId: string };
+const NAV_ITEMS: NavItem[] = [
+  { key: "home",     label: "BERANDA",    targetId: "home" },
+  { key: "about",    label: "TENTANG",    targetId: "about" },
+  { key: "schedule", label: "JADWAL",     targetId: "schedule" },
+  { key: "location", label: "LOKASI",     targetId: "location" },
+  { key: "joinus",   label: "BELI TIKET", targetId: "joinus" },
+];
+
+const SCROLL_DURATION_MS = 1300; // match duration in lenis
+const EXTRA_BUFFER_MS = 150;     // small buffer so observer re-aktif setelah animasi berakhir
+
 export default function Navbar() {
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [isNightMode, setIsNightMode] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
+  // blokir perubahan active saat animasi scrolling supaya gak “patah-patah”
+  const [suppressActive, setSuppressActive] = useState(false);
+  const suppressTimerRef = useRef<number | null>(null);
+
+  const textColor = isNightMode ? "text-white" : "text-black";
+  const hoverBarColor =
+    "bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6]";
+
+  /** --- Scroll / ESC listeners --- */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     const onKeyDown = (e: KeyboardEvent) => {
@@ -24,90 +46,152 @@ export default function Navbar() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, []);
+
+  /** --- Smooth scroll to section --- */
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
   ) => {
     e.preventDefault();
     const el = document.getElementById(targetId);
-    if (el) {
-      const lenis = getLenisInstance();
-      lenis?.scrollTo(el, {
-        offset: -10, // sedikit offset agar tidak menempel
-        duration: 1.3, // durasi lebih lama = lebih halus
-        easing: (t) =>
-          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2, // easeInOutCubic
+    if (!el) return;
+
+    // hitung tinggi navbar untuk offset akurat
+    const navEl = document.querySelector("nav");
+    const navH = (navEl?.getBoundingClientRect().height ?? 96) + 8; // +8px padding
+
+    // optimism: langsung highlight target
+    setActiveSection(targetId);
+
+    // suppress perubahan active selama animasi
+    setSuppressActive(true);
+    if (suppressTimerRef.current) window.clearTimeout(suppressTimerRef.current);
+    suppressTimerRef.current = window.setTimeout(() => {
+      setSuppressActive(false);
+    }, SCROLL_DURATION_MS + EXTRA_BUFFER_MS);
+
+    const lenis = getLenisInstance();
+    if (lenis) {
+      lenis.scrollTo(el, {
+        offset: -navH,
+        duration: SCROLL_DURATION_MS / 1000, // lenis pakai detik
+        easing: (t: number) =>
+          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
       });
-      closeDrawer?.();
+    } else {
+      // fallback native
+      const top =
+        el.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top, behavior: "smooth" });
     }
+
+    closeDrawer();
   };
 
+  /** --- Drawer controls --- */
   const openDrawer = () => {
     setIsDrawerVisible(true);
     setIsMobileMenuOpen(true);
   };
-
   const closeDrawer = () => {
     setIsMobileMenuOpen(false);
     setTimeout(() => setIsDrawerVisible(false), 300);
   };
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // threshold mobile
-    };
-
-    checkMobile(); // run once on mount
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const [isNightMode, setIsNightMode] = useState(false);
-
+  /** --- Night mode follows system preference --- */
   useEffect(() => {
     const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
-
     setIsNightMode(matchDark.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setIsNightMode(e.matches);
-    };
-
+    const handleChange = (e: MediaQueryListEvent) => setIsNightMode(e.matches);
     matchDark.addEventListener("change", handleChange);
-
-    return () => {
-      matchDark.removeEventListener("change", handleChange);
-    };
+    return () => matchDark.removeEventListener("change", handleChange);
   }, []);
-  const textColor = isNightMode ? "text-white" : "text-black";
-  const hoverBarColor =
-    "bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6]";
-  // useEffect(() => {
-  //   const currentHour = new Date().getHours();
-  //   setIsNightMode(currentHour >= 18 || currentHour < 6);
-  // }, []);
 
-  const navItem = (href: string, label: string) => (
-    <Link
-      href={href}
-      className={`relative group text-sm font-semibold ${
-        pathname === href
-          ? "text-[#F97316]"
-          : isNightMode
-          ? "text-white"
-          : "text-black"
-      }`}
+  /** --- Observe sections to update active link --- */
+  useEffect(() => {
+    const ids = NAV_ITEMS.map((n) => n.targetId);
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (suppressActive) return; // jangan ubah active saat animasi berlangsung
+
+        // pilih yang paling “centered” / paling besar rasio
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.id) {
+          setActiveSection(visible.target.id);
+        } else if (window.scrollY < 80) {
+          setActiveSection("home");
+        }
+      },
+      {
+        root: null,
+        // Fokus ke area tengah viewport agar gak “nyangkut” di section sebelumnya
+        // Top & bottom dipotong 45% viewport height: section aktif saat berada dekat tengah.
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: [0.25, 0.5, 0.75],
+      }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [suppressActive]);
+
+  /** --- Shared classes --- */
+  const navLinkClass = (isActive: boolean) =>
+    `relative group text-sm font-semibold ${
+      isActive ? "text-[#F97316]" : textColor
+    }`;
+
+  /** --- Desktop link --- */
+  const DesktopLink = ({ item }: { item: NavItem }) => (
+    <a
+      href={`#${item.targetId}`}
+      onClick={(e) => handleSmoothScroll(e, item.targetId)}
+      className={navLinkClass(activeSection === item.targetId)}
     >
-      {label}
+      {item.label}
       <span
-        className={`absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] transition-all duration-300 ${
-          pathname === href ? "w-full" : "w-0 group-hover:w-full"
+        className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} transition-all duration-300 ${
+          activeSection === item.targetId ? "w-full" : "w-0 group-hover:w-full"
         }`}
       />
-    </Link>
+    </a>
+  );
+
+  /** --- Drawer link --- */
+  const DrawerLink = ({ item }: { item: NavItem }) => (
+    <a
+      href={`#${item.targetId}`}
+      onClick={(e) => handleSmoothScroll(e, item.targetId)}
+      className={`${textColor} font-semibold ${
+        activeSection === item.targetId ? "text-[#F97316]" : ""
+      }`}
+    >
+      {item.label}
+    </a>
+  );
+
+  /** --- Dynamic nav background/style --- */
+  const navStyle = useMemo(
+    () => ({
+      backgroundImage: `url('/assets/menubar/${
+        isNightMode ? "Menu-Bar-Night-New.png" : "Menu-Bar-Day-New.png"
+      }')`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundColor: isNightMode ? "#0A0A0A" : "#fff",
+      color: isNightMode ? "#fff" : "#000",
+    }),
+    [isNightMode]
   );
 
   return (
@@ -122,23 +206,9 @@ export default function Navbar() {
             ? "bg-[#0A0A0A]"
             : "bg-white"
         }`}
-        style={{
-          backgroundImage: `url('/assets/menubar/${
-            isNightMode ? "Menu-Bar-Night-New.png" : "Menu-Bar-Day-New.png"
-          }')`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-
-          // backgroundPositionY: scrolled ? "center" : "center",
-
-          backgroundColor: isNightMode ? "#0A0A0A" : "#fff", // fallback
-          color: isNightMode ? "#fff" : "#000", // fallback text color
-        }}
+        style={navStyle}
       >
-        <div
-          className={`max-w-8xl mx-auto px-6 h-24 flex justify-between items-center`} // h-24 = 96px
-        >
+        <div className="max-w-8xl mx-auto px-6 h-24 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold text-white">
               <Link href="/">
@@ -153,144 +223,71 @@ export default function Navbar() {
             </span>
           </div>
 
+          {/* Desktop nav */}
           <div className="hidden md:flex gap-6 items-center">
-            {navItem("#", "HOME")}
-            <a
-              href="#about"
-              onClick={(e) => handleSmoothScroll(e, "about")}
-              className={`relative group text-sm font-semibold ${textColor}`}
-            >
-              ABOUT
-              <span
-                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
-              />
-            </a>
-            <a
-              href="#schedule"
-              onClick={(e) => handleSmoothScroll(e, "schedule")}
-              className={`relative group text-sm font-semibold ${textColor}`}
-            >
-              SCHEDULE
-              <span
-                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
-              />
-            </a>
-            <a
-              href="#location"
-              onClick={(e) => handleSmoothScroll(e, "location")}
-              className={`relative group text-sm font-semibold ${textColor}`}
-            >
-              LOCATION
-              <span
-                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
-              />
-            </a>
-            <a
-              href="#joinus"
-              onClick={(e) => handleSmoothScroll(e, "joinus")}
-              className={`relative group text-sm font-semibold ${textColor}`}
-            >
-              JOIN US
-              <span
-                className={`absolute left-0 bottom-0 h-[2px] ${hoverBarColor} w-0 group-hover:w-full transition-all duration-300`}
-              />
-            </a>
+            {NAV_ITEMS.map((item) => (
+              <DesktopLink key={item.key} item={item} />
+            ))}
           </div>
 
-          <div className="flex items-center gap-4 text-white">
-            <button
-              className={`md:hidden text-2xl transition-transform duration-300 ${
-                isMobileMenuOpen ? "rotate-90 scale-125" : "rotate-0 scale-100"
-              }`}
-              onClick={openDrawer}
-            >
-              <FiMenu />
-            </button>
-            <a
-              href="https://www.apkomjogja.org/tiket"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-block bg-gradient-to-r from-[#F97316] via-[#EF4444] to-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-md shadow-[#F97316]/50 hover:shadow-lg hover:shadow-[#F97316]/80"
-            >
-              Pesan Tiket →
-            </a>
-          </div>
+          {/* Mobile trigger */}
+          <div className={`flex items-center gap-4 ${textColor}`}>
+  <button
+    className={`md:hidden text-2xl transition-transform duration-300
+      ${isMobileMenuOpen ? "rotate-90 scale-125" : "rotate-0 scale-100"}
+      relative inline-flex h-10 w-10 items-center justify-center rounded-full
+      ${isNightMode
+        ? "bg-white/15 text-white ring-1 ring-white/20"
+        : "bg-black/5 text-black ring-1 ring-black/10"}
+      backdrop-blur-[2px] hover:opacity-90`}
+    onClick={openDrawer}
+    aria-label="Open menu"
+  >
+    <FiMenu className="h-6 w-6" />
+  </button>
+</div>
         </div>
       </nav>
 
+      {/* Overlay */}
       {isDrawerVisible && (
         <div
           onClick={closeDrawer}
-          className={`fixed inset-0 z-40 bg-black backdrop-blur-sm ${
+          className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm ${
             isMobileMenuOpen ? "animate-fadeIn" : "animate-fadeOut"
           }`}
         />
       )}
 
-      {isDrawerVisible && (
-        <div
-          className={`fixed top-0 right-0 h-full w-64 p-6 z-50 ${
-            isMobileMenuOpen ? "animate-slideInRight" : "animate-slideOutRight"
-          }`}
-          style={{
-            backgroundColor: isNightMode ? "#0A0A0A" : "#ffffff",
-            transition: "background-color 0.3s ease",
-          }}
-        >
-          <div className="flex justify-end mb-6">
-            <button onClick={closeDrawer} className={`text-2xl ${textColor}`}>
-              <FiX />
-            </button>
-          </div>
-          <ul className="flex flex-col gap-6 text-sm font-medium">
-            <li>
-              <Link
-                href="#"
-                onClick={closeDrawer}
-                className={`${textColor} font-semibold`}
-              >
-                HOME
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#about"
-                onClick={closeDrawer}
-                className={`${textColor} font-semibold`}
-              >
-                ABOUT
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#schedule"
-                onClick={closeDrawer}
-                className={`${textColor} font-semibold`}
-              >
-                SCHEDULE
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#location"
-                onClick={closeDrawer}
-                className={`${textColor} font-semibold`}
-              >
-                LOCATION
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#joinus"
-                onClick={closeDrawer}
-                className={`${textColor} font-semibold`}
-              >
-                JOIN US
-              </Link>
-            </li>
-          </ul>
+      {/* Mobile drawer */}
+      <div
+        className={`fixed top-0 right-0 z-50 h-full w-3/4 max-w-xs bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between px-6 h-24 border-b border-gray-200 dark:border-gray-700">
+          <img
+            src="/assets/logo/new-fix-logo-yoygakomtek.png"
+            alt="yogyakomtek"
+            className="h-16 w-auto"
+            width={200}
+            height={200}
+
+          />
+          <button
+            className="text-2xl text-gray-800 dark:text-gray-200"
+            onClick={closeDrawer}
+            aria-label="Close menu"
+          >
+            <FiX />
+          </button>
         </div>
-      )}
+        <div className="flex flex-col px-6 py-8 gap-6">
+          {NAV_ITEMS.map((item) => (
+            <DrawerLink key={item.key} item={item} />
+          ))}
+        </div>
+      </div>
     </>
   );
 }

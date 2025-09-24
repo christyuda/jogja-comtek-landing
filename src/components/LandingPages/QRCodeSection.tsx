@@ -58,7 +58,7 @@ export default function QRCodeSection() {
               onClick={openSite}
               className="w-full sm:w-auto h-11 px-6 rounded-full font-semibold text-white shadow-lg shadow-black/20 bg-gradient-to-r from-[#F97316] to-[#EF4444] transition will-change-transform hover:scale-[1.02] active:scale-[.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
             >
-              Kunjungi Situs →
+              Beli Tiket →
             </button>
             <button
               type="button"
@@ -84,9 +84,7 @@ export default function QRCodeSection() {
             🎫 Ayo Hadir di Yogyakomtek 2025!
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed">
-            Cukup scan QR yang tersedia dan kamu akan diarahkan ke website resmi
-            acara. Temukan informasi jadwal, lokasi, dan aktivitas seru lainnya
-            hanya dengan satu langkah.
+          Cukup scan QR yang tersedia dan kamu akan diarahkan ke website pembelian tiket acara
           </p>
         </div>
       </div>
