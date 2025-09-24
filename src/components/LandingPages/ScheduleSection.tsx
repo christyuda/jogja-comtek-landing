@@ -521,7 +521,7 @@ export function ScheduleSection() {
               5 days
             </span>{" "}
             Prodi ELINS FMIPA UGM (AI)
-            <VenueChip>SPC-X SC</VenueChip>
+            <VenueChip>SC Lantai 1</VenueChip>
           </div>
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
@@ -529,7 +529,7 @@ export function ScheduleSection() {
               5 days
             </span>{" "}
             Univ. AMIKOM (ANIMASI)
-            <VenueChip>SPC-Y SC</VenueChip>
+            <VenueChip>SC Lantai 1</VenueChip>
           </div>
 
           <div className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/40 transition">
