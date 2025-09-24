@@ -13,6 +13,8 @@ const NAV_ITEMS: NavItem[] = [
   { key: "schedule", label: "JADWAL",     targetId: "schedule" },
   { key: "location", label: "LOKASI",     targetId: "location" },
   { key: "joinus",   label: "BELI TIKET", targetId: "joinus" },
+  { key: "competition",   label: "KOMPETISI", targetId: "competition" },
+
 ];
 
 const SCROLL_DURATION_MS = 1300; // match duration in lenis
