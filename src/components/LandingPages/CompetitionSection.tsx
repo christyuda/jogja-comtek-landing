@@ -28,7 +28,7 @@ const COMPETITIONS: CompetitionItem[] = [
   {
     title: "Coswalk Competition",
     imageUrl:
-      "https://drive.google.com/file/d/1ENLn7brOHSQvYTxrcawZmqfIYBHHGyzB/view",
+      "https://drive.google.com/file/d/1N3yOAfDCJgxwqnfoI2sWLZasn7Ok36xJ/view",
     href: "https://www.instagram.com/p/DOEJTfHkhX8/?img_index=1",
     tag: "Kompetisi",
     useIframe: true, 
