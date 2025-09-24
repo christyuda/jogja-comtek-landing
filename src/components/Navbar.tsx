@@ -13,7 +13,7 @@ const NAV_ITEMS: NavItem[] = [
   { key: "schedule", label: "JADWAL",     targetId: "schedule" },
   { key: "location", label: "LOKASI",     targetId: "location" },
   { key: "joinus",   label: "BELI TIKET", targetId: "joinus" },
-  { key: "competition",   label: "KOMPETISI", targetId: "competition" },
+  { key: "competitions",   label: "KOMPETISI", targetId: "competitions" },
 
 ];
 

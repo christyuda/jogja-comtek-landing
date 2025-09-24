@@ -2,6 +2,7 @@
 "use client";
 
 import AboutSection from "@/components/LandingPages/AboutSection";
+import { CompetitionSection } from "@/components/LandingPages/CompetitionSection";
 const CountdownSection = dynamic(
   () => import("@/components/LandingPages/CountdownSection"),
   { ssr: false } // ⬅️ kunci perbaikan
@@ -25,6 +26,7 @@ export default function HomePage() {
       <CountdownSection />
       <QRCodeSection />
       <LocationSection />
+      <CompetitionSection />
     </>
   );
 }
