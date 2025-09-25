@@ -133,7 +133,7 @@ export default function AboutSection() {
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2
                 "
               >
-                Daftar Sekarang →
+                Beli Tiket →
               </button>
             </div>
           </motion.div>
