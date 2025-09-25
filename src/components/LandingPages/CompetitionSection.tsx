@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 
 const ACCENT = "#F4B74A";
 
@@ -144,6 +143,13 @@ const COMPETITIONS: CompetitionItem[] = [
     imageUrl: IMG("Workshop Kurasi 1 on 1 (1).png"),
     href: "https://docs.google.com/forms/d/e/1FAIpQLSeJdgNouVkpQAeImWTa2eHzu-DjSi8uyvq7CfxU9OJO_35JhA/viewform",
     tag: "Seminar",
+    useIframe: false,
+  },
+  {
+    title: "National Vice Coding Competition",
+    imageUrl: IMG("National Vibe Coding.png"),
+    href: "nationalvibecoding.com",
+    tag: "Lomba",
     useIframe: false,
   },
 ];
