@@ -22,11 +22,12 @@ export default function HomePage() {
       <HeroSection />
       <HomeContent />
       <AboutSection />
+      <CompetitionSection />
+
       <ScheduleSection />
       <CountdownSection />
       <QRCodeSection />
       <LocationSection />
-      <CompetitionSection />
     </>
   );
 }
