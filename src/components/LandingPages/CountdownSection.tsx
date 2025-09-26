@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export default function CountdownSection() {
-  const targetDate = new Date("2025-09-27T00:00:00").getTime();
+const targetDate = new Date("2025-09-27T10:00:00+07:00").getTime();
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
 
   function getTimeRemaining() {
