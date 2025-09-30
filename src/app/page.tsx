@@ -10,6 +10,7 @@ const CountdownSection = dynamic(
 import HeroSection from "@/components/LandingPages/HeroSection";
 import HomeContent from "@/components/LandingPages/HomeContent";
 import LocationSection from "@/components/LandingPages/LocationSection";
+import ArticleSection from "@/components/LandingPages/NewsSection";
 import QRCodeSection from "@/components/LandingPages/QRCodeSection";
 import { ScheduleSection } from "@/components/LandingPages/ScheduleSection";
 import useSmoothScroll from "@/hooks/useSmoothScroll";
@@ -23,7 +24,7 @@ export default function HomePage() {
       <HomeContent />
       <AboutSection />
       <CompetitionSection />
-
+      <ArticleSection />
       <ScheduleSection />
       <CountdownSection />
       <QRCodeSection />
