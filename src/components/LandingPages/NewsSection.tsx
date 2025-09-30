@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
 import Link from "next/link";
+import { useMemo } from "react";
 
 export type NewsItem = {
   id: string;
@@ -130,13 +130,13 @@ export default function NewsSection({ items }: Props) {
       },
       {
         id: "11",
-        title: "YOGYAKOMTEK 2025 hadir pada 27 September-1 Oktober 2025. Pameran IT edisi ke-28 ini digelar di Gelanggang Inovasi dan Kreativitas (GIK) Universitas Gadjah Mada (UGM).",
+        title: "Anak Muda Padati Yogyakomtek, Berburu Teknologi Terkini",
         summary:
-          "Pameran komputer legendaris Yogyakomtek kembali menyapa publik untuk ke-29 kalinya, sepanjang 27 September - 1 Oktober 2025.",
-        href: "https://jogja.tribunnews.com/diy/1194352/yogyakomtek-2025-digelar-dengan-konsep-festival-gandeng-tiga-perguruan-tinggi",
-        date: "2025-09-27",
+          "Ribuan anak muda langsung memenuhi Gelanggang Inovasi dan Kreativitas UGM, tempat berlangsungnya Yogyakomtek. Pameran komputer terbesar, terlengkap dan termurah ini menghadirkan teknologi terbaru yang sesuai kebutuhan anak-anak muda.",
+        href: "https://www.bisnisjogja.id/anak-muda-padati-yogyakomtek-berburu-teknologi-terkini/",
+        date: "2025-09-28",
         image:
-          "https://asset-2.tribunnews.com/jogja/foto/bank/images/Yogyakomtek-2025-Digelar-dengan-Konsep-Festival-Gandeng-Tiga-Perguruan-Tinggi.jpg",
+          "https://www.bisnisjogja.id/wp-content/uploads/2025/09/28iKOM-1.webp",
         tag: "Announcement",
       },
       {
